@@ -1,7 +1,7 @@
 package sample;
 
 public class Vehicle {
-    private int id;
+    private final int id;
     private String brand;
     private String model;
     private String type;
@@ -20,6 +20,7 @@ public class Vehicle {
     }
 
     // getters
+    public int getId() { return id; }
     public String getModel() { return model; }
     public String getType() { return type; }
     public String getColour() { return colour; }
