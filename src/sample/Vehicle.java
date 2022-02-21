@@ -1,6 +1,7 @@
 package sample;
 
 public class Vehicle {
+    private int id;
     private String brand;
     private String model;
     private String type;
@@ -8,7 +9,8 @@ public class Vehicle {
     private String location;
     private int year;
 
-    public Vehicle(String brand, String model, String type, String colour, String location, int year){
+    public Vehicle(int id, String brand, String model, String type, String colour, String location, int year){
+        this.id = id;
         this.brand = brand;
         this.model = model;
         this.type = type;
@@ -34,4 +36,16 @@ public class Vehicle {
     public void setYear(int year) { this.year = year; }
     public void setBrand(String brand) { this.brand = brand; }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", colour='" + colour + '\'' +
+                ", location='" + location + '\'' +
+                ", year=" + year +
+                '}';
+    }
 }
