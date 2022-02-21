@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EditVehicleController">
+    <children>
+        <Label alignment="CENTER" prefHeight="53.0" prefWidth="189.0" text="Edit Vehicle" textAlignment="CENTER">
+            <font>
+                <Font size="25.0" />
+            </font></Label>
+        <HBox alignment="CENTER" prefHeight="190.0" prefWidth="328.0" spacing="10.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                    <children>
+                        <Label text="Brand" />
+                        <ChoiceBox fx:id="brandChoiceBox" prefWidth="150.0" />
+                        <Label text="Vehicle Type" />
+                        <ChoiceBox fx:id="typeChoiceBox" prefWidth="150.0" />
+                        <Label text="Vehicle Location" />
+                        <ChoiceBox fx:id="locationChoiceBox" prefWidth="150.0" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                    <children>
+                        <Label text="Model Year" />
+                        <TextField fx:id="yearField" />
+                        <Label text="Model Name" />
+                        <TextField fx:id="modelField" />
+                        <Label text="Colour" />
+                        <TextField fx:id="colourField" />
+                    </children>
+                </VBox>
+            </children></HBox>
+      <HBox alignment="CENTER" prefHeight="33.0" prefWidth="325.0" spacing="10.0">
+         <children>
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateVehicle" text="Update" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
+         </children>
+      </HBox>
+    </children>
+</VBox>
