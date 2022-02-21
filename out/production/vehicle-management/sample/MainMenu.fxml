@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="301.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+   <children>
+      <Label alignment="TOP_CENTER" prefHeight="83.0" prefWidth="301.0" text="Vehicle Management System" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label text="Please select garage(s) to continue" />
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="111.0" prefWidth="82.0" spacing="5.0">
+         <children>
+            <CheckBox fx:id="plymouthCheck" mnemonicParsing="false" text="Plymouth">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></CheckBox>
+            <CheckBox fx:id="tavistockCheck" mnemonicParsing="false" text="Tavistock" />
+            <CheckBox fx:id="newquayCheck" mnemonicParsing="false" text="Newquay" />
+            <CheckBox fx:id="torquayCheck" mnemonicParsing="false" styleClass="label" text="Torquay" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
+      <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitForm" text="Continue" />
+   </children>
+</VBox>
