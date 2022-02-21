@@ -1,0 +1,14 @@
+{
+    "brands": [
+        "AC", "Abarth", "Aixam", "Alfa", "Alpine", "Ariel", "Aston", "Audi", "Austin", "BAC", "BMW", "Beauford", "Bentley", "Bowler", "Bramwith",
+        "Bugatti", "Buick", "CUPRA", "Cadillac", "Carbodies", "Caterham", "Chesil", "Chevrolet", "Chrysler", "Citroen", "Corvette", "DFSK", "DS", "Dacia",
+        "Daewoo", "Daihatsu", "Daimler", "Dax", "Delorean", "Dodge", "Ferrari", "Fiat", "Ford", "GBS", "GMC", "Great", "Hillman", "Holden", "Honda", "Humber",
+        "Hummer", "Hyundai", "Infiniti", "Isuzu", "Iveco", "Jaguar", "Jeep", "Jensen", "Kia", "LEVC", "Lada", "Lamborghini", "Lancia", "Land", "Lexus", "Lincoln",
+        "London", "Lotus", "MG", "MINI", "MOKE", "Mahindra", "Maserati", "Maybach", "Mazda", "McLaren", "Mercedes", "Microcar", "Mitsubishi", "Morgan", "Morris",
+        "Nissan", "Noble", "Opel", "Pagani", "Perodua", "Peugeot", "Pilgrim", "Polestar", "Pontiac", "Porsche", "Proton", "REO", "Radical", "Rage", "Reliant", "Renault",
+        "Replica", "Reva", "Robin", "Rolls", "Rover", "SEAT", "SKODA", "Saab", "Sebring", "Smart", "Spyker", "SsangYong", "Subaru", "Sunbeam", "Suzuki", "TVR", "Tesla",
+        "Tiger", "Toyota", "Triumph", "Ultima", "Vauxhall", "Volkswagen", "Volvo", "Westfield", "Yamaha", "Zenos"
+    ],
+    "types": ["Motorcycle", "Car"],
+    "locations": ["Plymouth","Newquay","Torquay","Tavistock"]
+}
