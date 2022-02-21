@@ -61,7 +61,7 @@ public class JSONProcessing {
         saveData();
     }
 
-    private static void deleteVehicle(int id) throws IOException {
+    public static void deleteVehicle(int id) throws IOException {
         System.out.printf("deleting vehicle ID: %s%n", id);
         JSONObject targetVehicle = null;
         for (int i = 0; i < currentJSON.length() ; i++) {
