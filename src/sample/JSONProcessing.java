@@ -76,7 +76,7 @@ public class JSONProcessing {
         saveData();
     }
 
-    private static void createVehicle(String brand, String model, String type, int year, String colour, String location) throws IOException {
+    public static void createVehicle(String brand, String model, String type, int year, String colour, String location) throws IOException {
         JSONObject newVehicle = new JSONObject();
         newVehicle.put("id", getBiggestID() + 1);
         newVehicle.put("brand", brand);
