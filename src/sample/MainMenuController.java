@@ -35,12 +35,6 @@ public class MainMenuController {
             return;
         }
 
-        // get all vehicles from that location as a list of Vehicle Objects
-        ArrayList<Vehicle> vehicles = JSONProcessing.getVehicleByLocation(locations);
-        for (Vehicle vehicle : vehicles){
-            System.out.println(vehicle.getLocation());
-        }
-
         // open TableView
         VehicleTableController.showVehicles(locations);
     }
