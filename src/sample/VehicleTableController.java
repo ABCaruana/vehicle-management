@@ -214,7 +214,7 @@ public class VehicleTableController {
         int i = 0;
         deselectAll();
         for (Object vehicle : vehicleTable.getItems()){
-            if ( ((Vehicle)vehicle).getType().equals("Motorcycle") ){
+            if ( ((Vehicle)vehicle).getVehicleType().equals("Motorcycle") ){
                 vehicleTable.getSelectionModel().select(i);
             }
             i++;
@@ -228,7 +228,7 @@ public class VehicleTableController {
         int i = 0;
         deselectAll();
         for (Object vehicle : vehicleTable.getItems()){
-            if ( ((Vehicle)vehicle).getType().equals("Car") ){
+            if ( ((Vehicle)vehicle).getVehicleType().equals("Car") ){
                 vehicleTable.getSelectionModel().select(i);
             }
             i++;
@@ -244,12 +244,12 @@ public class VehicleTableController {
 
         // link our data to table columns
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
-        colourColumn.setCellValueFactory(new PropertyValueFactory<>("colour"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleBrand"));
+        modelColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleModel"));
+        colourColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleColour"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
+        yearColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleYear"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleLocation"));
 
         // allow user to select multiple items
         vehicleTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

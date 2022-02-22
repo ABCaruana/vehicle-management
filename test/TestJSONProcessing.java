@@ -4,10 +4,7 @@ import sample.Vehicle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class TestJSONProcessing {
 
@@ -38,12 +35,12 @@ public class TestJSONProcessing {
         Vehicle output = JSONProcessing.getVehicleByID(id);
 
         assertEquals(output.getId(), id);
-        assertEquals(output.getYear(), 2021);
-        assertEquals(output.getColour(), "blue");
-        assertEquals(output.getType(), "Motorcycle");
-        assertEquals(output.getLocation(), "Torquay");
-        assertEquals(output.getBrand(), "TestBrand2");
-        assertEquals(output.getModel(), "TestModel2");
+        assertEquals(output.getVehicleYear(), 2021);
+        assertEquals(output.getVehicleColour(), "blue");
+        assertEquals(output.getVehicleType(), "Motorcycle");
+        assertEquals(output.getVehicleLocation(), "Torquay");
+        assertEquals(output.getVehicleBrand(), "TestBrand2");
+        assertEquals(output.getVehicleModel(), "TestModel2");
 
         // destroy test data
         JSONProcessing.deleteVehicle(id);
@@ -65,7 +62,7 @@ public class TestJSONProcessing {
         ArrayList<Vehicle> vehicles = JSONProcessing.getVehicleByLocation(locations);
 
         for (Vehicle vehicle : vehicles){
-            assertEquals(vehicle.getLocation(), "Plymouth");
+            assertEquals(vehicle.getVehicleLocation(), "Plymouth");
         }
 
         JSONProcessing.deleteVehicle(id);
@@ -91,7 +88,7 @@ public class TestJSONProcessing {
         ArrayList<Vehicle> vehicles = JSONProcessing.getVehicleByLocation(locations);
 
         for (Vehicle vehicle : vehicles){
-            if(vehicle.getLocation().equals("Plymouth") || vehicle.getLocation().equals("Torquay")){
+            if(vehicle.getVehicleLocation().equals("Plymouth") || vehicle.getVehicleLocation().equals("Torquay")){
                 // pass
                 assertTrue(true);
             }
@@ -111,12 +108,12 @@ public class TestJSONProcessing {
 
         Vehicle output = JSONProcessing.getVehicleByID(id);
         assertEquals(output.getId(), id);
-        assertEquals(output.getYear(), 2004);
-        assertEquals(output.getColour(), "green");
-        assertEquals(output.getType(), "Car");
-        assertEquals(output.getLocation(), "Plymouth");
-        assertEquals(output.getBrand(), "TestBrand");
-        assertEquals(output.getModel(), "TestModel");
+        assertEquals(output.getVehicleYear(), 2004);
+        assertEquals(output.getVehicleColour(), "green");
+        assertEquals(output.getVehicleType(), "Car");
+        assertEquals(output.getVehicleLocation(), "Plymouth");
+        assertEquals(output.getVehicleBrand(), "TestBrand");
+        assertEquals(output.getVehicleModel(), "TestModel");
 
         JSONProcessing.deleteVehicle(id);
     }

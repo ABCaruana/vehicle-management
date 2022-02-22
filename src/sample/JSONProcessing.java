@@ -47,12 +47,12 @@ public class JSONProcessing {
                 targetVehicle = currentJSON.getJSONObject(i);
                 // dont go to the next JSONObject if the current one shares the same ID as the parameters
                 if (targetVehicle.get("id").equals(id)) {
-                    targetVehicle.put("brand", brand);
-                    targetVehicle.put("model", model);
-                    targetVehicle.put("type", type);
-                    targetVehicle.put("year", year);
-                    targetVehicle.put("colour", colour);
-                    targetVehicle.put("location", location);
+                    targetVehicle.put("vehicleBrand", brand);
+                    targetVehicle.put("vehicleModel", model);
+                    targetVehicle.put("vehicleType", type);
+                    targetVehicle.put("vehicleYear", year);
+                    targetVehicle.put("vehicleColour", colour);
+                    targetVehicle.put("vehicleLocation", location);
 
                     currentJSON.put(i, targetVehicle);
                     break;
@@ -92,12 +92,12 @@ public class JSONProcessing {
             JSONObject newVehicle = new JSONObject();
             int newID = getBiggestID() + 1;
             newVehicle.put("id", newID);
-            newVehicle.put("brand", brand);
-            newVehicle.put("model", model);
-            newVehicle.put("type", type);
-            newVehicle.put("year", year);
-            newVehicle.put("colour", colour);
-            newVehicle.put("location", location);
+            newVehicle.put("vehicleBrand", brand);
+            newVehicle.put("vehicleModel", model);
+            newVehicle.put("vehicleType", type);
+            newVehicle.put("vehicleYear", year);
+            newVehicle.put("vehicleColour", colour);
+            newVehicle.put("vehicleLocation", location);
             currentJSON.put(newVehicle);
             saveData();
             return newID;
@@ -113,7 +113,7 @@ public class JSONProcessing {
         Vehicle[] vehicles = dataToObjects();
         ArrayList<Vehicle> output = new ArrayList<>();
         for (Vehicle vehicle : vehicles){
-            if (locations.contains(vehicle.getLocation())){
+            if (locations.contains(vehicle.getVehicleLocation())){
                 output.add(vehicle);
             }
         }

@@ -16,7 +16,6 @@ import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class EditVehicleController {
     private static Vehicle targetVehicle;
@@ -43,9 +42,9 @@ public class EditVehicleController {
         addBrands((JSONArray) jsonObject.get("brands"));
         addVehicleTypes((JSONArray) jsonObject.get("types"));
         addLocations((JSONArray) jsonObject.get("locations"));
-        brandChoiceBox.setValue(targetVehicle.getBrand());
-        typeChoiceBox.setValue(targetVehicle.getType());
-        locationChoiceBox.setValue(targetVehicle.getLocation());
+        brandChoiceBox.setValue(targetVehicle.getVehicleBrand());
+        typeChoiceBox.setValue(targetVehicle.getVehicleType());
+        locationChoiceBox.setValue(targetVehicle.getVehicleLocation());
     }
 
     public void addBrands(JSONArray brands) throws FileNotFoundException {
@@ -122,9 +121,9 @@ public class EditVehicleController {
     }
 
     private void populateTextFields(){
-        yearField.setText(String.valueOf(targetVehicle.getYear()));
-        colourField.setText(targetVehicle.getColour());
-        modelField.setText(targetVehicle.getModel());
+        yearField.setText(String.valueOf(targetVehicle.getVehicleYear()));
+        colourField.setText(targetVehicle.getVehicleColour());
+        modelField.setText(targetVehicle.getVehicleModel());
     }
 
     @FXML

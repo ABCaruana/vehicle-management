@@ -1,5 +1,3 @@
-import org.junit.Before;
-import org.junit.BeforeClass;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
@@ -13,75 +11,75 @@ public class TestVehicle {
 
     // Test Getters
     @Test
-    void testGetId(){
+    public void testGetId(){
         assertEquals(testVehicle.getId(), 999999);
     }
     @Test
-    void testGetBrand(){
-        assertEquals(testVehicle.getBrand(), "TestBrand");
+    public void testGetBrand(){
+        assertEquals(testVehicle.getVehicleBrand(), "TestBrand");
     }
     @Test
-    void testGetModel(){
-        assertEquals(testVehicle.getModel(), "TestModel");
+    public void testGetModel(){
+        assertEquals(testVehicle.getVehicleModel(), "TestModel");
     }
     @Test
-    void testGetType(){
-        assertEquals(testVehicle.getType(), "Car");
+    public void testGetType(){
+        assertEquals(testVehicle.getVehicleType(), "Car");
     }
     @Test
-    void testGetColour(){
-        assertEquals(testVehicle.getColour(), "TestColour");
+    public void testGetColour(){
+        assertEquals(testVehicle.getVehicleColour(), "TestColour");
     }
     @Test
-    void testGetLocation(){
-        assertEquals(testVehicle.getLocation(), "Plymouth");
+    public void testGetLocation(){
+        assertEquals(testVehicle.getVehicleLocation(), "Plymouth");
     }
     @Test
-    void testGetYear(){
-        assertEquals(testVehicle.getYear(), 2004);
+    public void testGetYear(){
+        assertEquals(testVehicle.getVehicleYear(), 2004);
     }
 
     // Test Setters
     @Test
-    void testSetBrand(){
+    public void testSetBrand(){
         String targetBrand = "TestBrand2";
-        testVehicle.setBrand(targetBrand);
-        assertEquals(testVehicle.getBrand(), targetBrand);
+        testVehicle.setVehicleBrand(targetBrand);
+        assertEquals(testVehicle.getVehicleBrand(), targetBrand);
     }
     @Test
-    void testSetModel(){
+    public void testSetModel(){
         String targetModel = "TestModel2";
-        testVehicle.setModel(targetModel);
-        assertEquals(testVehicle.getModel(), targetModel);
+        testVehicle.setVehicleModel(targetModel);
+        assertEquals(testVehicle.getVehicleModel(), targetModel);
     }
     @Test
-    void testSetType(){
+    public void testSetType(){
         String targetType = "Motorcycle";
-        testVehicle.setType(targetType);
-        assertEquals(testVehicle.getType(), targetType);
+        testVehicle.setVehicleType(targetType);
+        assertEquals(testVehicle.getVehicleType(), targetType);
     }
     @Test
-    void testSetColour(){
+    public void testSetColour(){
         String targetColour = "TestColour2";
-        testVehicle.setColour(targetColour);
-        assertEquals(testVehicle.getColour(), targetColour);
+        testVehicle.setVehicleColour(targetColour);
+        assertEquals(testVehicle.getVehicleColour(), targetColour);
     }
     @Test
-    void testSetLocation(){
+    public void testSetLocation(){
         String targetLocation = "Torquay";
-        testVehicle.setType(targetLocation);
-        assertEquals(testVehicle.getType(), targetLocation);
+        testVehicle.setVehicleType(targetLocation);
+        assertEquals(testVehicle.getVehicleType(), targetLocation);
     }
     @Test
-    void testSetYear(){
+    public void testSetYear(){
         int targetYear = 2022;
-        testVehicle.setYear(targetYear);
-        assertEquals(testVehicle.getYear(), targetYear);
+        testVehicle.setVehicleYear(targetYear);
+        assertEquals(testVehicle.getVehicleYear(), targetYear);
     }
 
     // Test toString
     @Test
-    void testToString(){
+    public void testToString(){
         String output = testVehicle.toString();
         String expected = "Vehicle{id=999999, brand='TestBrand', model='TestModel', type='Car', colour='TestColour', location='Plymouth', year=2004}";
         assertEquals(output, expected);
