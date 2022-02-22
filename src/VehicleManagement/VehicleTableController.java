@@ -1,4 +1,4 @@
-package sample;
+package VehicleManagement;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

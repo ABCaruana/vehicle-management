@@ -1,9 +1,11 @@
-package sample;
+package VehicleManagement;
 
-import com.sun.javafx.scene.control.InputField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -12,14 +14,12 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
-public class AddVehicleController {
+public class EditVehicleController {
+    private static Vehicle targetVehicle;
+
     @FXML
     ChoiceBox brandChoiceBox;
     @FXML
@@ -35,19 +35,16 @@ public class AddVehicleController {
     @FXML
     Button cancelButton;
     @FXML
-    Button saveButton;
-
-    public static JSONObject getVehicleConfig() throws IOException {
-        // read the vehicle config json
-        String content = new String(Files.readAllBytes(Paths.get("vehicleConfig.json")));
-        return new JSONObject(content);
-    }
+    Button updateButton;
 
     public void populateDropDowns(JSONObject jsonObject) throws IOException {
         // fill in the dropdown bars with information
         addBrands((JSONArray) jsonObject.get("brands"));
         addVehicleTypes((JSONArray) jsonObject.get("types"));
         addLocations((JSONArray) jsonObject.get("locations"));
+        brandChoiceBox.setValue(targetVehicle.getVehicleBrand());
+        typeChoiceBox.setValue(targetVehicle.getVehicleType());
+        locationChoiceBox.setValue(targetVehicle.getVehicleLocation());
     }
 
     public void addBrands(JSONArray brands) throws FileNotFoundException {
@@ -74,6 +71,20 @@ public class AddVehicleController {
         locationChoiceBox.setItems(availableChoices);
     }
 
+    public static void showEditMenu(Vehicle vehicle) throws IOException {
+        targetVehicle = vehicle;
+        openInitialWindow();
+    }
+
+    private static void openInitialWindow() throws IOException {
+        Parent root = FXMLLoader.load(EditVehicleController.class.getResource("EditVehicle.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Edit Vehicle");
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+    }
+
     @FXML
     void closeWindow(){
         // get a handle to the stage
@@ -82,7 +93,7 @@ public class AddVehicleController {
     }
 
     @FXML
-    private void saveVehicle() throws IOException {
+    private void updateVehicle() throws IOException {
         String brandChoice = (String) brandChoiceBox.getValue();
         String typeChoice = (String) typeChoiceBox.getValue();
         String locationChoice = (String) locationChoiceBox.getValue();
@@ -92,26 +103,32 @@ public class AddVehicleController {
 
         // create a list of problematic fields to present to the user at the end, if applicable
         String result = Validation.checkErrors(brandChoice, typeChoice, locationChoice, modelChoice, colourChoice, yearChoice);
-        if (result != null) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION, result);
-            a.setTitle("Problems with vehicle");
-            a.showAndWait();
-            return;
-        }
-
+            if (result != null){
+                Alert a = new Alert(Alert.AlertType.INFORMATION, result);
+                a.setTitle("Problems with vehicle");
+                a.showAndWait();
+                return;
+            }
 
         // after this point, all data should be valid
         int parsedYearChoice = Integer.parseInt(yearField.getText());
 
-        JSONProcessing.createVehicle(brandChoice, modelChoice, typeChoice, parsedYearChoice, colourChoice, locationChoice);
+        JSONProcessing.updateVehicle(targetVehicle.getId(), brandChoice, modelChoice, typeChoice, parsedYearChoice, colourChoice, locationChoice);
 
-        Alert completionDialog = new Alert(Alert.AlertType.INFORMATION, "Vehicle added to database");
+        Alert completionDialog = new Alert(Alert.AlertType.INFORMATION, "Vehicle updated in database");
         completionDialog.showAndWait();
         closeWindow();
     }
 
+    private void populateTextFields(){
+        yearField.setText(String.valueOf(targetVehicle.getVehicleYear()));
+        colourField.setText(targetVehicle.getVehicleColour());
+        modelField.setText(targetVehicle.getVehicleModel());
+    }
+
     @FXML
     void initialize() throws IOException {
-        populateDropDowns(getVehicleConfig());
+        populateDropDowns(AddVehicleController.getVehicleConfig());
+        populateTextFields();
     }
 }

@@ -1,4 +1,4 @@
-package sample;
+package VehicleManagement;
 
 import com.google.gson.Gson;
 import org.json.JSONArray;

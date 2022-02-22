@@ -1,4 +1,4 @@
-package sample;
+package VehicleManagement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,8 +7,6 @@ import javafx.scene.control.CheckBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainMenuController {
 

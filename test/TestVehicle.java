@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
-import sample.Vehicle;
+import VehicleManagement.Vehicle;
 
 public class TestVehicle {
     private Vehicle testVehicle = new Vehicle(

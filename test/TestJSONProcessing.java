@@ -1,6 +1,6 @@
 import org.junit.Test;
-import sample.JSONProcessing;
-import sample.Vehicle;
+import VehicleManagement.JSONProcessing;
+import VehicleManagement.Vehicle;
 
 import static org.junit.jupiter.api.Assertions.*;
 

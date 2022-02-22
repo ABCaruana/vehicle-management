@@ -1,4 +1,4 @@
-package sample;
+package VehicleManagement;
 
 import java.util.ArrayList;
 

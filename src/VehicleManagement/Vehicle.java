@@ -1,4 +1,4 @@
-package sample;
+package VehicleManagement;
 
 public class Vehicle {
     private final int id;
