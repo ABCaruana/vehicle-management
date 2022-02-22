@@ -98,6 +98,7 @@ public class VehicleTableController {
         }
         else {
             editVehicleButton.setDisable(false);
+            deleteVehicleButton.setDisable(false);
         }
     }
 
@@ -130,6 +131,7 @@ public class VehicleTableController {
         alert.getButtonTypes().setAll(yesButton, noButton);
         Optional<ButtonType> result = alert.showAndWait();
 
+        // delete data if user clicks yes.
         if (result.get() == yesButton) {
             ArrayList<Integer> ids = getSelectedIDs();
             for (int id : ids) {
@@ -141,6 +143,7 @@ public class VehicleTableController {
 
     public void refreshTable(){
         System.out.println("refreshing table");
+        // clear the table
         vehicleTable.getItems().clear();
 
         // get new data
@@ -207,6 +210,8 @@ public class VehicleTableController {
             vehicleTable.getSelectionModel().clearSelection(i);
             i++;
         }
+        editVehicleButton.setDisable(true);
+        deleteVehicleButton.setDisable(true);
     }
 
     @FXML
@@ -221,6 +226,8 @@ public class VehicleTableController {
         }
         // for some reason JFX doesnt edit the number of selected items, so manually disable specific buttons here
         editVehicleButton.setDisable(true);
+        editVehicleButton.setDisable(false);
+        deleteVehicleButton.setDisable(false);
     }
 
     @FXML
@@ -235,6 +242,8 @@ public class VehicleTableController {
         }
         // for some reason JFX doesnt edit the number of selected items, so manually disable specific buttons here
         editVehicleButton.setDisable(true);
+        editVehicleButton.setDisable(false);
+        deleteVehicleButton.setDisable(false);
     }
 
     @FXML

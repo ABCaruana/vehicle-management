@@ -8,6 +8,8 @@ public class Validation {
                                          String colourChoice, String yearChoice) {
             ArrayList<String> errorFields = new ArrayList<>();
 
+            // make sure all of our data doesnt fall into these criteria
+            // add to our list of errors if they do
             if (brandChoice == null) {
                 errorFields.add("Vehicle Brand");
             }

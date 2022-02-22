@@ -25,6 +25,7 @@ public class JSONProcessing {
     // turn all of our json code into a list of Vehicle objects
     // use this to build a TableView
     private static Vehicle[] dataToObjects(){
+        // deserialise our json array and parse it into an array of the Vehicle class (key names must match class variable names)
         return new Gson().fromJson(currentJSON.toString(), Vehicle[].class);
     }
 
@@ -70,10 +71,12 @@ public class JSONProcessing {
     public static void deleteVehicle(int id) {
         System.out.printf("deleting vehicle ID: %s%n", id);
         JSONObject targetVehicle = null;
+        // loop through all of our vehicles
         for (int i = 0; i < currentJSON.length() ; i++) {
             targetVehicle = currentJSON.getJSONObject(i);
             int targetVehicleID = (int) targetVehicle.get("id");
 
+            // remove element if it shares the same ID as our target
             if (targetVehicleID == id) {
                 currentJSON.remove(i);
             }
@@ -90,7 +93,9 @@ public class JSONProcessing {
     public static Integer createVehicle(String brand, String model, String type, int year, String colour, String location){
         try{
             JSONObject newVehicle = new JSONObject();
+            // one-up the largest ID to ensure unique ID
             int newID = getBiggestID() + 1;
+
             newVehicle.put("id", newID);
             newVehicle.put("vehicleBrand", brand);
             newVehicle.put("vehicleModel", model);
@@ -110,10 +115,13 @@ public class JSONProcessing {
     }
 
     public static ArrayList<Vehicle> getVehicleByLocation(ArrayList<String> locations){
+        //get list of all our vehicles
         Vehicle[] vehicles = dataToObjects();
+
         ArrayList<Vehicle> output = new ArrayList<>();
         for (Vehicle vehicle : vehicles){
             if (locations.contains(vehicle.getVehicleLocation())){
+                // add vehicle to array if it matches location criteria
                 output.add(vehicle);
             }
         }
