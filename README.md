@@ -43,7 +43,7 @@ Some data changes (updating vehicles, adding new vehicles) requires the data to 
 
 ### Updating Configuration values
 I have programmed the dialogs for adding and updating vehicles to take custom brands, simply:
-1. open `vehicleConfig.json`
+1. open [vehicleConfig.json](/vehicleConfig.json)
 2. find the category you wish to update (brands, vehicle types, locations)
 3. add new strings in the same format as the existing data
 4. restart the application.
@@ -54,12 +54,37 @@ Now, new data should appear in the drop-down boxes when adding or updating vehic
 ```json
 {
     "data": [{
-        "brand": "Audi, Volkswagen etc.",
-        "model": "RS7, Golf etc.",
-        "type": "Car/Motorcycle",
-        "year": 1974,
-        "colour": "White",
-        "location": "Plymouth"
+        "vehicleLocation": "Tavistock",
+        "vehicleBrand": "BMW",
+        "vehicleYear": 2021,
+        "vehicleModel": "S1000R",
+        "vehicleColour": "Khaki",
+        "id": 1,
+        "vehicleType": "Motorcycle"
+    }, {
+        "vehicleLocation": "Tavistock",
+        "vehicleBrand": "Audi",
+        "vehicleYear": 2010,
+        "vehicleModel": "S5",
+        "vehicleColour": "Turquoise",
+        "id": 2,
+        "vehicleType": "Car"
+    }, {
+        "vehicleLocation": "Plymouth",
+        "vehicleBrand": "Mercury",
+        "vehicleYear": 1987,
+        "vehicleModel": "Cougar",
+        "vehicleColour": "Mauv",
+        "id": 3,
+        "vehicleType": "Car"
+    }, {
+        "vehicleLocation": "Tavistock",
+        "vehicleBrand": "Toyota",
+        "vehicleYear": 1997,
+        "vehicleModel": "Tacoma",
+        "vehicleColour": "Green",
+        "id": 4,
+        "vehicleType": "Car"
     }]
 }
 ```
@@ -81,7 +106,14 @@ As the frontend and backend are closely integrated, the tests are heavily focuse
 |9|deleting a single vehicle removes it from the table and data file.|Same as expected|PASS|
 |10|deleting multiple vehicles removes them from the table and data file.|Same as expected|PASS|
 |11|Selecting X location(s) only shows vehicles from those locations (repeated for every combination).|Same as expected|PASS|
+|12|When I create a new vehicle, its ID is equal to the current biggest ID, plus 1.|Same as expected|PASS|
 
+### automated testing
+I have made unit tests for input validation, the main `Vehicle` class as well as the operations for creating, updating and deleting cars. Where i haven't been able to code an automated test, a manual one has been made (see [manual testing](#manual-testing)). To run these tests:
+1. open this repository in intelliJ
+2. right click the [test directory](/test)
+3. click `Run 'All tests'`
+   - You can also do the same to individual tests inside the folder to run single test files.
 ## retrospective notes
 
 As this task came second to day-to-day work there were some features that i was not able to add during development (that I would have added in the EPA). These include:
