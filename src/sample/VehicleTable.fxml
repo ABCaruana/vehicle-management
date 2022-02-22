@@ -9,8 +9,8 @@
       <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="842.0" spacing="10.0">
          <children>
             <Button fx:id="addVehicleButton" mnemonicParsing="false" onAction="#openAddMenu" />
-            <Button fx:id="editVehicleButton" mnemonicParsing="false" onAction="#editVehicle" />
             <Button fx:id="deleteVehicleButton" mnemonicParsing="false" onAction="#deleteSelectedVehicles" />
+            <Button fx:id="editVehicleButton" mnemonicParsing="false" onAction="#editVehicle" />
             <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#refreshTable" />
             <Separator orientation="VERTICAL" prefHeight="37.0" prefWidth="0.0" />
             <Button fx:id="selectBikesButton" mnemonicParsing="false" onAction="#selectBikes" text="Select all Bikes" />

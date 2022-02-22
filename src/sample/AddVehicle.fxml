@@ -35,7 +35,7 @@
          </children></HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="325.0" spacing="10.0">
          <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveVehicle" prefHeight="25.0" prefWidth="54.0" text="Save" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveVehicle" prefHeight="25.0" prefWidth="54.0" text="Add" />
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
          </children>
       </HBox>

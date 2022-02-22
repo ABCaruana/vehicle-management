@@ -10,5 +10,5 @@
         "Tiger", "Toyota", "Triumph", "Ultima", "Vauxhall", "Volkswagen", "Volvo", "Westfield", "Yamaha", "Zenos"
     ],
     "types": ["Motorcycle", "Car"],
-    "locations": ["Plymouth","Newquay","Torquay","Tavistock"]
+    "locations": ["Plymouth", "Newquay", "Torquay", "Tavistock"]
 }

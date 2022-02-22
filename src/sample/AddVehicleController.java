@@ -91,7 +91,11 @@ public class AddVehicleController {
         String yearChoice = yearField.getText();
 
         // create a list of problematic fields to present to the user at the end, if applicable
-        if (!Validation.checkErrors(brandChoice, typeChoice, locationChoice, modelChoice, colourChoice, yearChoice)){
+        String result = Validation.checkErrors(brandChoice, typeChoice, locationChoice, modelChoice, colourChoice, yearChoice);
+        if (result != null) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, result);
+            a.setTitle("Problems with vehicle");
+            a.showAndWait();
             return;
         }
 

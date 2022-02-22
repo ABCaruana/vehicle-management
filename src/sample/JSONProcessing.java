@@ -38,30 +38,36 @@ public class JSONProcessing {
         return (JSONArray) jsonObject.get("data");
     }
 
-    public static void updateVehicle(int id, String brand, String model, String type, int year, String colour, String location) throws IOException {
-        System.out.printf("updating vehicle ID: %s%n", id);
-        // try to find a vehicle with the given ID
-        JSONObject targetVehicle = null;
-        for (int i = 0; i < currentJSON.length() ; i++){
-            targetVehicle = currentJSON.getJSONObject(i);
-            // dont go to the next JSONObject if the current one shares the same ID as the parameters
-            if (targetVehicle.get("id").equals(id)) {
-                targetVehicle.put("brand", brand);
-                targetVehicle.put("model", model);
-                targetVehicle.put("type", type);
-                targetVehicle.put("year", year);
-                targetVehicle.put("colour", colour);
-                targetVehicle.put("location", location);
+    public static void updateVehicle(int id, String brand, String model, String type, int year, String colour, String location) {
+        try{
+            System.out.printf("updating vehicle ID: %s%n", id);
+            // try to find a vehicle with the given ID
+            JSONObject targetVehicle = null;
+            for (int i = 0; i < currentJSON.length() ; i++){
+                targetVehicle = currentJSON.getJSONObject(i);
+                // dont go to the next JSONObject if the current one shares the same ID as the parameters
+                if (targetVehicle.get("id").equals(id)) {
+                    targetVehicle.put("brand", brand);
+                    targetVehicle.put("model", model);
+                    targetVehicle.put("type", type);
+                    targetVehicle.put("year", year);
+                    targetVehicle.put("colour", colour);
+                    targetVehicle.put("location", location);
 
-                currentJSON.put(i, targetVehicle);
-                break;
+                    currentJSON.put(i, targetVehicle);
+                    break;
+                }
             }
+            // make sure to update the data.
+            saveData();
         }
-        // make sure to update the data.
-        saveData();
+        catch (Exception ex){
+            System.out.println("error updating vehicle");
+            ex.printStackTrace();
+        }
     }
 
-    public static void deleteVehicle(int id) throws IOException {
+    public static void deleteVehicle(int id) {
         System.out.printf("deleting vehicle ID: %s%n", id);
         JSONObject targetVehicle = null;
         for (int i = 0; i < currentJSON.length() ; i++) {
@@ -73,20 +79,34 @@ public class JSONProcessing {
             }
         }
         // make sure to update the data.
-        saveData();
+        try{
+            saveData();
+        }
+        catch(IOException ex){
+            System.out.println("unable to save data.");
+        }
     }
 
-    public static void createVehicle(String brand, String model, String type, int year, String colour, String location) throws IOException {
-        JSONObject newVehicle = new JSONObject();
-        newVehicle.put("id", getBiggestID() + 1);
-        newVehicle.put("brand", brand);
-        newVehicle.put("model", model);
-        newVehicle.put("type", type);
-        newVehicle.put("year", year);
-        newVehicle.put("colour", colour);
-        newVehicle.put("location", location);
-        currentJSON.put(newVehicle);
-        saveData();
+    public static Integer createVehicle(String brand, String model, String type, int year, String colour, String location){
+        try{
+            JSONObject newVehicle = new JSONObject();
+            int newID = getBiggestID() + 1;
+            newVehicle.put("id", newID);
+            newVehicle.put("brand", brand);
+            newVehicle.put("model", model);
+            newVehicle.put("type", type);
+            newVehicle.put("year", year);
+            newVehicle.put("colour", colour);
+            newVehicle.put("location", location);
+            currentJSON.put(newVehicle);
+            saveData();
+            return newID;
+        }
+        catch (Exception e){
+            System.out.println("Error creating vehicle");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static ArrayList<Vehicle> getVehicleByLocation(ArrayList<String> locations){
@@ -116,17 +136,34 @@ public class JSONProcessing {
         return largestNumber;
     }
 
+    public static Vehicle getVehicleByID(Integer id){
+        Vehicle[] vehicles = dataToObjects();
+        for(Vehicle vehicle : vehicles){
+            if (vehicle.getId() == id){
+                return vehicle;
+            }
+        }
+        return null;
+    }
+
     private static void saveData() throws IOException {
-        System.out.println("Saving data");
-        // write the contents of currentJSON to the data.json file.
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", currentJSON);
+        try{
+            System.out.println("Saving data");
+            // write the contents of currentJSON to the data.json file.
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("data", currentJSON);
 
-        // write data
-        FileWriter file = new FileWriter(fileName);
-        file.write(jsonObject.toString());
+            // write data
+            FileWriter file = new FileWriter(fileName);
+            file.write(jsonObject.toString());
 
-        // close file
-        file.close();
+            // close file
+            file.close();
+        }
+        catch (Exception ex){
+            System.out.println("error saving data");
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 }

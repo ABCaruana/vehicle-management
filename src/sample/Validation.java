@@ -1,13 +1,11 @@
 package sample;
 
-import javafx.scene.control.Alert;
-
 import java.util.ArrayList;
 
 public class Validation {
-        public static boolean checkErrors(String brandChoice, String typeChoice,
-                                       String locationChoice, String modelChoice,
-                                       String colourChoice, String yearChoice) {
+        public static String checkErrors(String brandChoice, String typeChoice,
+                                         String locationChoice, String modelChoice,
+                                         String colourChoice, String yearChoice) {
             ArrayList<String> errorFields = new ArrayList<>();
 
             if (brandChoice == null) {
@@ -38,11 +36,8 @@ public class Validation {
                 for (String error : errorFields) {
                     finalErrorMessage.append("- ").append(error).append("\n");
                 }
-                Alert a = new Alert(Alert.AlertType.INFORMATION, finalErrorMessage.toString());
-                a.setTitle("Problems with vehicle");
-                a.showAndWait();
-                return false;
+                return finalErrorMessage.toString();
             }
-            return true;
+            return null;
         }
 }
